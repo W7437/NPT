@@ -1,21 +1,21 @@
-# Guia de Prescrição de NPT — v9
+# DadosUTI — Guia de Prescrição de NPT v10
 
-Cabeçalho alinhado ao padrão visual do DadosUTI:
+Esta versão usa o módulo **Gasometria** como padrão visual canônico do DadosUTI.
 
-- DADOSUTI no topo do quadro azul
-- nome da ferramenta em destaque
-- descrição curta logo abaixo
-- selo "Processamento local" à direita
-- faixa de privacidade logo abaixo do cabeçalho
+Padronizados exatamente com a Gasometria:
+- cor do cabeçalho `#173f6d`
+- fundo `#eef2f6`
+- tipografia Inter / system-ui
+- largura e margens da página
+- tamanhos de DADOSUTI, título e descrição
+- selo com bola verde + “Processamento local”
+- faixa clara abaixo do cabeçalho
+- raios, sombras e cores-base dos cards
 
-## Atualização no GitHub Pages
-
-Substitua na raiz do repositório:
-
+## Arquivos
 - `index.html`
 - `style.css`
 - `app.js`
+- `.nojekyll`
 
-Esta versão usa `style.css?v=9` e `app.js?v=9` para reduzir problemas de cache.
-
-Depois do commit, use `Ctrl + F5` no navegador.
+Para atualizar o GitHub Pages, substitua os três arquivos principais. O HTML usa `?v=10` para reduzir cache.
