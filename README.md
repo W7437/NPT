@@ -23,3 +23,11 @@ Ferramenta web local para auxiliar a composição inicial de Nutrição Parenter
 ## Aviso
 
 Ferramenta de apoio à decisão clínica. A composição final da NPT deve ser individualizada e revisada pelo médico e pela farmácia responsável pela manipulação, especialmente quanto à compatibilidade cálcio-fósforo, concentração final, osmolaridade e apresentações locais dos componentes.
+
+
+## Estrutura do projeto
+
+- `index.html` — estrutura da interface.
+- `style.css` — estilos visuais.
+- `app.js` — lógica clínica, cálculos e alertas.
+- `.nojekyll` — evita processamento desnecessário pelo Jekyll no GitHub Pages.
