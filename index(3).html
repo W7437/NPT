@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Guia de Prescrição de NPT — Adulto</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header>
+ <div>
+  <h1>Guia de Prescrição de NPT — Adulto</h1>
+  <div class="sub">Informe os dados essenciais. A ferramenta propõe uma composição inicial, mostra os cálculos, converte para as apresentações do formulário e sinaliza situações que exigem individualização.</div>
+ </div>
+ <div class="local">100% local</div>
+</header>
+
+<section class="card">
+<h2>1. Meta nutricional e volume</h2>
+<div class="grid">
+ <div class="field"><label>Peso para cálculo (kg)</label><input id="peso" type="number" step="0.1" min="1" placeholder="Ex.: 70"></div>
+ <div class="field">
+   <label>Cota calórica <span class="suggested">sugerida automaticamente</span></label>
+   <div class="inline"><input id="kcal" type="number" step="1" value="25"><select id="kcalTipo"><option value="kg">kcal/kg/d</option><option value="total">kcal/d</option></select></div>
+   <div class="field-source" id="kcalFonte">Fonte: ESPEN ICU 2023 — na ausência de calorimetria/VO₂/VCO₂, podem ser usadas equações simples de 20–25 kcal/kg/d. O protótipo sugere 25 kcal/kg/d como necessidade estimada.</div>
+ </div>
+ <div class="field">
+   <label>Proteína <span class="suggested">sugerida automaticamente</span></label>
+   <div class="inline"><input id="prot" type="number" step="0.1" value="1.3"><span style="font-size:11px;color:#667085">g/kg/d</span></div>
+   <div class="field-source" id="protFonte">Fonte: ESPEN ICU 2023 — durante doença crítica, 1,3 g/kg/d de equivalentes proteicos podem ser ofertados progressivamente.</div>
+ </div>
+ <div class="field"><label>Fase clínica</label><select id="fase"><option value="uti">Paciente crítico / UTI</option><option value="estavel">Hospitalizado estável</option></select></div>
+
+ <div class="field"><label>Volume da NPT</label><div class="inline"><input id="volume" type="number" step="10" placeholder="Ex.: 2000"><span style="font-size:11px;color:#667085">mL/d</span></div></div>
+ <div class="field"><label>Se volume vazio, estimar</label><select id="volSug"><option value="25">25 mL/kg/d</option><option value="30">30 mL/kg/d</option><option value="20">20 mL/kg/d</option><option value="0">Não estimar — exigir definição do volume</option></select><div class="field-source">Em congestão/BH positivo sem terapia renal substitutiva, a estimativa automática por peso é desativada: a NPT deve caber na meta hídrica global do paciente.</div></div>
+ <div class="field">
+   <label>Dia de UTI / fase aguda</label>
+   <input id="diaUti" type="number" min="1" step="1" value="1">
+   <div class="field-source"><b>O que considerar fase aguda:</b> primeiros 7 dias da doença crítica/UTI. ESPEN: período precoce = D1–2; período tardio da fase aguda = D3–7. Após esse período, considerar fase pós-aguda conforme a evolução clínica. Se a necessidade energética foi estimada por equação, a ESPEN 2023 recomenda oferta hipocalórica (&lt;70% da necessidade estimada) durante a primeira semana de UTI.</div>
+ </div>
+ <div class="field"><label>Risco de síndrome de realimentação</label><select id="refeed"><option value="nao">Não conhecido</option><option value="sim">Sim</option><option value="extremo">Risco extremo</option></select></div>
+
+ <div class="field"><label>Propofol (mL/h)</label><input id="propofol" type="number" min="0" step="0.1" value="0"></div>
+ <div class="field"><label>Via planejada</label><select id="via"><option value="central">Central</option><option value="periferica">Periférica</option></select></div>
+ <div class="field"><label>Aminoácido disponível</label><select id="aaConc"><option value="0.10">AA 10%</option><option value="0.15">AA 15%</option><option value="0.08">HEPA 8%</option><option value="0.10">NEFRO 10%</option></select></div>
+ <div class="field"><label>Lipídio disponível</label><select id="lipTipo"><option value="SMOF 20%">SMOF 20%</option><option value="MCT/LCT 20%">MCT/LCT 20%</option></select></div>
+
+ <div class="field span2">
+   <label>Fonte de fósforo para conversão em mL</label>
+   <select id="phosProduto">
+     <option value="organico">Fósforo orgânico / glicerofosfato — 1 mmol P/mL + 2 mEq Na/mL</option>
+     <option value="kphos">Fosfato de potássio — 1,1 mmol P/mL + 2 mEq K/mL</option>
+   </select>
+   <div class="field-source">A ferramenta usa esta concentração para transformar mmol de fósforo em mL e desconta o Na/K fornecido pelo próprio fosfato da necessidade total. Confirmar com a farmácia se a apresentação local for diferente.</div>
+ </div>
+</div>
+</section>
+
+<section class="card">
+<h2>2. Exames e contexto do dia</h2>
+<div class="note">Os eletrólitos séricos geram alertas e orientam a escolha da faixa de manutenção. Correções agudas devem ser consideradas separadamente da NPT.</div>
+<div class="grid">
+ <div class="field"><label>Na (mEq/L)</label><input id="na" type="number" step="0.1"></div>
+ <div class="field"><label>K (mEq/L)</label><input id="k" type="number" step="0.1"></div>
+ <div class="field"><label>Mg (mg/dL)</label><input id="mg" type="number" step="0.1"></div>
+ <div class="field"><label>P (mg/dL)</label><input id="p" type="number" step="0.1"></div>
+
+ <div class="field"><label>Ca total (mg/dL)</label><input id="ca" type="number" step="0.1"></div>
+ <div class="field"><label>Cl (mEq/L)</label><input id="cl" type="number" step="0.1"></div>
+ <div class="field"><label>HCO₃⁻ (mEq/L)</label><input id="bic" type="number" step="0.1"></div>
+ <div class="field"><label>pH</label><input id="ph" type="number" step="0.01"></div>
+
+ <div class="field"><label>Glicemia (mg/dL)</label><input id="glicemia" type="number" step="1"></div>
+ <div class="field"><label>Triglicerídeos (mg/dL)</label><input id="tg" type="number" step="1"></div>
+ <div class="field"><label>Creatinina (mg/dL)</label><input id="cr" type="number" step="0.01"></div>
+ <div class="field"><label>Função renal</label><select id="renal"><option value="ok">Sem disfunção relevante conhecida</option><option value="aki">LRA/DRC sem diálise</option><option value="ihd">Hemodiálise intermitente</option><option value="crrt">TRS contínua</option></select></div>
+
+ <div class="field"><label>Diurese / 24 h (mL)</label><input id="diurese" type="number" step="10"></div>
+ <div class="field"><label>Balanço hídrico</label><select id="bh"><option value="neutro">Sem restrição definida</option><option value="positivo">Positivo / congesto / edema</option><option value="negativo">Perdas / necessidade de reposição</option></select></div>
+ <div class="field"><label>Perdas GI importantes</label><select id="gi"><option value="nao">Não</option><option value="sim">Sim</option></select></div>
+ <div class="field"><label>Polivitamínico / oligoelementos</label><select id="micro"><option value="fruto">Frutovitan 10 mL + Oligo-Trat 2 mL</option><option value="cerne">Cerne 12 5 mL + Addaven 10 mL</option></select></div>
+</div>
+<div class="actions">
+ <button id="calc">Gerar recomendação</button>
+ <button class="secondary" id="limpar">Limpar</button>
+</div>
+</section>
+
+<section class="card hidden" id="out">
+<h2>3. Proposta calculada</h2><div class="note">Cada componente é mostrado em quantidade clínica (g, mEq ou mmol) e também no volume correspondente da apresentação selecionada.</div>
+<div class="results">
+ <div class="result"><div class="name">Energia alvo usada</div><div class="value" id="rKcal">—</div></div>
+ <div class="result"><div class="name">Proteína</div><div class="value" id="rProt">—</div></div>
+ <div class="result"><div class="name">GIR</div><div class="value" id="rGir">—</div></div>
+ <div class="result"><div class="name">Volume</div><div class="value" id="rVol">—</div></div>
+</div>
+
+<div class="tablewrap">
+<table>
+<thead><tr><th>Componente</th><th>Recomendação</th><th>Conversão prática</th><th>Por quê</th></tr></thead>
+<tbody id="tbody"></tbody>
+</table>
+</div>
+</section>
+
+<section class="card hidden" id="alertsCard">
+<h2>4. Alertas e pontos de revisão</h2>
+<div id="alerts"></div>
+</section>
+
+<section class="card hidden" id="rxCard">
+<h2>5. Resumo para transcrever na solicitação da NPT</h2>
+<div class="rx" id="rx"></div>
+<div class="actions"><button id="copiar">Copiar resumo</button></div>
+</section>
+
+<section class="card">
+<h2>Como o protótipo decide</h2>
+<div class="source">
+<span class="pill">ESPEN 2023</span>
+Em UTI, sugere automaticamente 25 kcal/kg/d como estimativa prática dentro da faixa de 20–25 kcal/kg/d quando calorimetria/VO₂/VCO₂ não estão disponíveis, e 1,3 g/kg/d de proteína como referência progressiva. Quando a necessidade energética é estimada por equação, alerta para evitar oferta plena precoce na fase aguda. Também limita glicose a 5 mg/kg/min e considera 1 g/kg/d de lipídio como teto usual, com tolerância até 1,5 g/kg/d.<br><br>
+<span class="pill">ASPEN 2025</span>
+Para uma formulação inicial, proteína é definida primeiro; aproximadamente 25% das kcal podem vir de emulsão lipídica, e o restante é completado com dextrose. O volume-alvo deve ser compatível com a necessidade/estratégia hídrica do paciente; por isso este protótipo não aplica mais um fallback fixo de 2.000 mL. Pontos de partida de eletrólitos: Na 1–2 mEq/kg (70–100 mEq/d), K 50–70 mEq/d, Ca 10–15 mEq/d, Mg 8–20 mEq/d e fósforo 20–40 mmol/d, sempre individualizados.<br><br>
+<span class="pill">Formulário fornecido</span>
+Conversões: glicose 50%, lipídio 20%, NaCl 3,42 mEq/mL, KCl 2,56 mEq/mL, acetatos de Na/K 2 mEq/mL, gluconato de cálcio 0,5 mEq/mL e sulfato de magnésio 4 mEq/mL. O fósforo é recomendado em mmol/d e convertido para mL conforme o produto selecionado; o sódio ou potássio que acompanha o fosfato é contabilizado na composição total.
+</div>
+</section>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
