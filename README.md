@@ -1,18 +1,24 @@
-# Guia de Prescrição de NPT — Adulto
+# Guia de Prescrição de NPT — v8
 
-Versão com layout alinhado ao padrão visual dos demais módulos.
+Versão com identidade visual alinhada aos demais módulos do DadosUTI.
 
-## Arquivos
+## Importante ao atualizar no GitHub Pages
 
-- `index.html` — interface
-- `style.css` — layout e identidade visual
-- `app.js` — cálculos e regras clínicas
-- `.nojekyll` — publicação simples no GitHub Pages
+Substitua os três arquivos da raiz:
 
-## Publicação no GitHub Pages
+- `index.html`
+- `style.css`
+- `app.js`
 
-Envie os arquivos para a raiz do repositório e publique a branch principal em **Settings → Pages → Deploy from a branch → main → /(root)**.
+O `index.html` desta versão usa `style.css?v=8` e `app.js?v=8` para evitar cache da versão anterior.
 
-## Privacidade
+Após o commit, faça uma atualização forçada no navegador:
+- Windows/Chrome: `Ctrl + F5`
+- ou abra a página em uma aba anônima.
 
-A ferramenta funciona localmente no navegador, sem backend e sem envio dos dados clínicos.
+## Estrutura
+
+- `index.html`
+- `style.css`
+- `app.js`
+- `.nojekyll`
